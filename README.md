@@ -14,14 +14,17 @@ This project is about a cron scheduler service which schedules cron jobs via sch
    ![Home Page](./images/home.png)
 
 2. Create new job
+
    Lets users create new jobs
    ![Create New Job Page](./images/create_new.png)
 
 3. List all jobs
+
    List all of the scheduled jobs that displays type, job payload, the cron expr and created time.
    ![List All Jobs Page](./images/list_jobs.png)
 
 4. List job entries
+
    List job run entries and shows the execution status, retry count, scheduled time, completed time, updated time, success output message and error message.
    ![List Job Entries Page](./images/list_job_runs.png)
 

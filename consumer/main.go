@@ -20,7 +20,7 @@ func main() {
 	defer cfg.RabbitMQ.Close()
 	defer cfg.MQChannel.Close()
 
-	rabbitmqService := services.NewRMQPService(cfg.Db, cfg.RabbitMQ, cfg.MQChannel)
+	rabbitmqService := services.NewRMQService(cfg.Db, cfg.RabbitMQ, cfg.MQChannel)
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	rabbitmqService.Start(ctx)

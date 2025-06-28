@@ -25,7 +25,7 @@ This project is about a cron scheduler service which schedules cron jobs via sch
 
 4. List job entries
 
-   List job run entries and shows the execution status, retry count, scheduled time, completed time, updated time, success output message and error message.
+   List job run entries and shows the execution status, retry count, scheduled time, completed time, success output message and error message.
    ![List Job Entries Page](./images/list_job_runs.png)
 
 ## Detailed flow
@@ -86,3 +86,16 @@ Build and Run with docker-compose:
 ```bash
 docker-compose --env-file .env -p cronflow up -d --build
 ```
+
+## Note
+
+When deployed on docker, it will use UTC timezone for scheduling cron jobs.
+
+## Blog
+
+You can read this blog: [Building a Cron Scheduler with RabbitMQ in Go](https://blog.anikety.com/building-a-cron-scheduler-with-rabbitmq-in-go), to understand the code about scheduling cron jobs, publishing the jobs over RabbitMQ queue, consuming the job from queue, processing the job and acknowledging & retrying on failures.
+
+## Future/TODO
+
+- Using dead letter queues (DLQ) for futher processing/analytics of the permanently failed jobs
+- Using Redis locks to ensure single execution, in case multiple consumers are listening over the queue or the same job was re-published.

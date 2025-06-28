@@ -20,7 +20,7 @@ type RMQService struct {
 	channel   *amqp091.Channel
 }
 
-func NewRMQPService(db *sql.DB, conn *amqp091.Connection, channel *amqp091.Channel) *RMQService {
+func NewRMQService(db *sql.DB, conn *amqp091.Connection, channel *amqp091.Channel) *RMQService {
 	return &RMQService{
 		dbService: NewDBService(db),
 		conn:      conn,

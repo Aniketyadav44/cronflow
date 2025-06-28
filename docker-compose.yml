@@ -1,0 +1,35 @@
+version: "1"
+
+services:
+  scheduler:
+    build: ./scheduler
+    ports:
+      - "8000:8000"
+    environment:
+      DASHBOARD_PORT: ${DASHBOARD_PORT}
+      PG_HOST: ${PG_HOST}
+      PG_PORT: ${PG_PORT}
+      PG_USER: ${PG_USER}
+      PG_PASSWORD: ${PG_PASSWORD}
+      PG_DBNAME: ${PG_DBNAME}
+      RMQ_USER: ${RMQ_USER}
+      RMQ_PASSWORD: ${RMQ_PASSWORD}
+      RMQ_HOST: ${RMQ_HOST}
+      RMQ_PORT: ${RMQ_PORT}
+      RMQ_VHOST: ${RMQ_VHOST}
+
+  consumer:
+    build: ./consumer
+    environment:
+      DASHBOARD_PORT: ${DASHBOARD_PORT}
+      PG_HOST: ${PG_HOST}
+      PG_PORT: ${PG_PORT}
+      PG_USER: ${PG_USER}
+      PG_PASSWORD: ${PG_PASSWORD}
+      PG_DBNAME: ${PG_DBNAME}
+      RMQ_USER: ${RMQ_USER}
+      RMQ_PASSWORD: ${RMQ_PASSWORD}
+      RMQ_HOST: ${RMQ_HOST}
+      RMQ_PORT: ${RMQ_PORT}
+      RMQ_VHOST: ${RMQ_VHOST}
+      MAIL_PASS: ${MAIL_PASS}

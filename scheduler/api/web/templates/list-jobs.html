@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Scheduled Jobs</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="stylesheet" href="/static/css/list-jobs.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-title" onclick="location.href='/'">Cron Scheduler</div>
+    </header>
+
+    <main class="dashboard-content">
+      <h1>Scheduled Jobs</h1>
+      <table border="1" cellpadding="8">
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Payload</th>
+          <th>Cron Expression</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+        {{range .Jobs}}
+        <tr>
+          <td>{{.Id}}</td>
+          <td>{{.Type}}</td>
+          <td>{{.Payload}}</td>
+          <td>{{.CronExpr}}</td>
+          <td>{{.CreatedAt}}</td>
+          <td>
+            <a href="/job-entries?id={{.Id}}">View Runs</a>
+            <form method="POST" action="/api/delete-job?id={{.Id}}">
+              <button
+                style="
+                  background-color: #e53935;
+                  color: white;
+                  border: none;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                  font-size: 14px;
+                  margin-top: 6px;
+                  display: inline-block;
+                "
+                type="submit"
+              >
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+        {{end}}
+      </table>
+    </main>
+  </body>
+</html>
